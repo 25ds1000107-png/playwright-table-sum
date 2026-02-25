@@ -26,7 +26,7 @@ jobs:
         run: npm install
 
       - name: Install Playwright Browsers
-        run: npx playwright install --with-deps
+        run: npx playwright install 
 
       - name: Run Script - 25ds1000107@ds.study.iitm.ac.in
         run: node scrape.js
