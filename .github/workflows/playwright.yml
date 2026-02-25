@@ -8,10 +8,6 @@ jobs:
   scrape:
     runs-on: ubuntu-latest
 
-    defaults:
-      run:
-        working-directory: ./
-
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -19,12 +15,18 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: '18'
+
+      - name: Verify Node
+        run: |
+          node -v
+          npm -v
 
       - name: Install Dependencies
-        run: |
-          npm install
-          npx playwright install --with-deps
+        run: npm install
+
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
 
       - name: Run Script - 25ds1000107@ds.study.iitm.ac.in
         run: node scrape.js
