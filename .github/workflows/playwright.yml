@@ -15,18 +15,13 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
-
-      - name: Verify Node
-        run: |
-          node -v
-          npm -v
+          node-version: 18
 
       - name: Install Dependencies
         run: npm install
 
       - name: Install Playwright Browsers
-        run: npx playwright install 
+        run: npx playwright install chromium
 
       - name: Run Script - 25ds1000107@ds.study.iitm.ac.in
         run: node scrape.js
